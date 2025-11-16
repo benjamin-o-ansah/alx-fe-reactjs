@@ -30,8 +30,8 @@ const EditRecipeForm = () => {
     );
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event) => {
+    event.preventDefault();
     if (!title.trim()) return alert('Title is required');
     updateRecipe(recipe.id, { title: title.trim(), description: description.trim() });
     navigate(`/recipes/${recipe.id}`);
