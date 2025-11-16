@@ -1,24 +1,22 @@
-import { Link } from "react-router-dom";
 import { useRecipeStore } from "./recipeStore";
+import { Link } from "react-router-dom";
 import FavoriteButton from "./FavoriteButton";
 
-const RecipeList = () => {
-  const recipes = useRecipeStore((state) => state.recipes) || [];
-  const searchTerm = useRecipeStore((state) => state.searchTerm) || "";
+const RecommendationsList = () => {
+  const recommendations = useRecipeStore((state) => state.recommendations) || [];
 
-  const displayedRecipes = searchTerm
-    ? recipes.filter((recipe) =>
-        recipe.title.toLowerCase().includes(searchTerm.toLowerCase())
-      )
-    : recipes;
-
-  if (displayedRecipes.length === 0) {
-    return <p>No recipes found. Try adding some or adjusting your search.</p>;
+  if (recommendations.length === 0) {
+    return (
+      <div>
+        <h2>Recommended For You</h2>
+        <p>No recommendations yet. Favorite some recipes to see suggestions!</p>
+      </div>
+    );
   }
 
   return (
     <ul style={{ listStyle: "none", padding: 0 }}>
-      {displayedRecipes.map((recipe) => (
+      {recommendations.map((recipe) => (
         <li
           key={recipe.id}
           style={{
@@ -39,4 +37,4 @@ const RecipeList = () => {
   );
 };
 
-export default RecipeList;
+export default RecommendationsList;

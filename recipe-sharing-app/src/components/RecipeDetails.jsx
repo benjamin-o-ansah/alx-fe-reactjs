@@ -1,6 +1,7 @@
 import { useParams, Link } from 'react-router-dom';
 import { useRecipeStore } from './recipeStore';
 import DeleteRecipeButton from './DeleteRecipeButton';
+import FavoriteButton from './FavoriteButton';
 
 const RecipeDetails = () => {
   const { id } = useParams();
@@ -19,6 +20,8 @@ const RecipeDetails = () => {
   }
 
   return (
+    <>
+    <FavoriteButton recipeId={recipe.id} />
     <div>
       <h1>{recipe.title}</h1>
 
@@ -37,6 +40,8 @@ const RecipeDetails = () => {
         </Link>
       </div>
     </div>
+    </>
+    
   );
 };
 
