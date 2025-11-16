@@ -3,11 +3,12 @@ import RecipeList from './components/RecipeList';
 import AddRecipeForm from './components/AddRecipeForm';
 import RecipeDetails from './components/RecipeDetails';
 import EditRecipeForm from './components/EditRecipeForm';
+import SearchBar from './components/SearchBar';
 import './App.css';
 
 function App() {
   return (
-    <Router>   {/* ✔ Checker now sees "Router" */}
+    // <Router>   {/* ✔ Checker now sees "Router" */}
       <div style={{ width: '800px', margin: '2rem auto', fontFamily: 'Arial, sans-serif' }}>
         <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <h1 style={{ margin: 0 }}>Recipe Sharing App</h1>
@@ -23,6 +24,7 @@ function App() {
               element={
                 <>
                   <AddRecipeForm />
+                  <SearchBar /> 
                   <RecipeList />
                 </>
               }
@@ -44,7 +46,7 @@ function App() {
           </Routes>
         </main>
       </div>
-    </Router>
+    // </Router>
   );
 }
 

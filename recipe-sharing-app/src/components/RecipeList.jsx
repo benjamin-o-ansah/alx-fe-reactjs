@@ -1,44 +1,29 @@
 import { Link } from 'react-router-dom';
 import { useRecipeStore } from './recipeStore';
-import DeleteRecipeButton from './DeleteRecipeButton';
 
 const RecipeList = () => {
-  const recipes = useRecipeStore((s) => s.recipes);
+  const recipes = useRecipeStore((state) => state.filteredRecipes);
+
+  if (recipes.length === 0)
+    return <p>No recipes found. Try adding some or adjusting your search.</p>;
 
   return (
-    <div>
-      <h2>Recipe List</h2>
-      {recipes.length === 0 && <p>No recipes yet. Add one!</p>}
-
+    <ul style={{ listStyle: 'none', padding: 0 }}>
       {recipes.map((recipe) => (
-        <div
+        <li
           key={recipe.id}
           style={{
-            marginBottom: '1rem',
-            padding: '8px',
-            border: '1px solid #ddd',
-            borderRadius: '6px',
+            border: '1px solid #ccc',
+            padding: '1rem',
+            marginBottom: '0.5rem',
+            borderRadius: '5px'
           }}
         >
-          <h3 style={{ margin: 0 }}>
-            <Link to={`/recipes/${recipe.id}`}>{recipe.title}</Link>
-          </h3>
-          <p style={{ marginTop: '6px' }}>
-            {recipe.description?.length > 120
-              ? recipe.description.slice(0, 120) + '…'
-              : recipe.description}
-          </p>
-
-          <div style={{ display: 'flex', gap: '8px' }}>
-            <Link to={`/edit/${recipe.id}`}>
-              <button>Edit</button>
-            </Link>
-
-            <DeleteRecipeButton id={recipe.id} />
-          </div>
-        </div>
+          <h3>{recipe.title}</h3>
+          <Link to={`/recipes/${recipe.id}`}>View Details</Link>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 };
 

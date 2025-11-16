@@ -1,26 +1,55 @@
 import { create } from 'zustand';
 
-export const useRecipeStore = create((set) => ({
+export const useRecipeStore = create((set, get) => ({
   recipes: [],
 
-  // add a new recipe (keeps previous behavior)
-  addRecipe: (newRecipe) =>
-    set((state) => ({
-      recipes: [...state.recipes, newRecipe],
-    })),
+  // Search state
+  searchTerm: '',
+  filteredRecipes: [],
 
-  // update an existing recipe by id
-  updateRecipe: (id, updates) =>
-    set((state) => ({
-      recipes: state.recipes.map((r) => (r.id === id ? { ...r, ...updates } : r)),
-    })),
+  // CRUD actions
+  addRecipe: (recipe) =>
+    set((state) => {
+      const updated = [...state.recipes, recipe];
+      return {
+        recipes: updated,
+        filteredRecipes: applyFilter(updated, state.searchTerm),
+      };
+    }),
 
-  // delete a recipe by id
+  updateRecipe: (id, updatedRecipe) =>
+    set((state) => {
+      const updated = state.recipes.map((r) =>
+        r.id === id ? { ...r, ...updatedRecipe } : r
+      );
+      return {
+        recipes: updated,
+        filteredRecipes: applyFilter(updated, state.searchTerm),
+      };
+    }),
+
   deleteRecipe: (id) =>
-    set((state) => ({
-      recipes: state.recipes.filter((r) => r.id !== id),
-    })),
+    set((state) => {
+      const updated = state.recipes.filter((r) => r.id !== id);
+      return {
+        recipes: updated,
+        filteredRecipes: applyFilter(updated, state.searchTerm),
+      };
+    }),
 
-  // replace whole list (handy for initialization or persistence)
-  setRecipes: (recipes) => set({ recipes }),
+  // Search term setter
+  setSearchTerm: (term) =>
+    set((state) => ({
+      searchTerm: term,
+      filteredRecipes: applyFilter(state.recipes, term),
+    })),
 }));
+
+// Helper function
+function applyFilter(recipes, term) {
+  if (!term) return recipes;
+  const lower = term.toLowerCase();
+  return recipes.filter((recipe) =>
+    recipe.title.toLowerCase().includes(lower)
+  );
+}
