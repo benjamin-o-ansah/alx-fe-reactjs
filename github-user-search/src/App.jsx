@@ -10,8 +10,8 @@ function App() {
   return (
     <>
 
-    <div style={{ textAlign: "center", marginTop: "50px" }}>
-      <h1>GitHub User Search</h1>
+     <div className="min-h-screen p-4 bg-red">
+      <h1 className="text-center text-3xl font-bold mb-6">GitHub Advanced User Search</h1>
       <Search />
     </div>
 
