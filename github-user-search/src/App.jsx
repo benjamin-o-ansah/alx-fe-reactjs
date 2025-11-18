@@ -4,13 +4,14 @@ import { useState } from 'react'
 import './App.css'
 import Search from "./components/Search"
 
+
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
 
-     <div className="min-h-screen p-4 bg-red">
+     <div className="min-h-screen p-4">
       <h1 className="text-center text-3xl font-bold mb-6">GitHub Advanced User Search</h1>
       <Search />
     </div>

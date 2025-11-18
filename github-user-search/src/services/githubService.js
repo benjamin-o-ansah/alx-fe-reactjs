@@ -1,8 +1,8 @@
 import axios from "axios";
+const MINI_URL = "https://api.github.com/";
+const BASE_URL = "https://api.github.com/search/users?q=";
 
-const BASE_URL = "https://api.github.com/search/users?q";
-
-export const fetchAdvancedUsers = async ({ username, location, minRepos }) => {
+export const fetchUserData = async ({ username, location, minRepos }) => {
   // Construct GitHub Search API query
   let query = username ? `${username} in:login` : "";
   if (location) query += ` location:${location}`;
@@ -17,7 +17,7 @@ export const fetchAdvancedUsers = async ({ username, location, minRepos }) => {
     // For each user, fetch extra details (like public_repos & location)
     const detailedUsers = await Promise.all(
       users.map(async (user) => {
-        const res = await axios.get(`${BASE_URL}/users/${user.login}`);
+        const res = await axios.get(`${MINI_URL}users/${user.login}`);
         return res.data;
       })
     );

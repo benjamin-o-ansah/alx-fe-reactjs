@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { fetchAdvancedUsers } from "../services/githubService";
+import { fetchUserData } from "../services/githubService";
 
 const Search = () => {
   const style ={
@@ -37,7 +37,7 @@ const Search = () => {
           placeholder="Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          className="border rounded px-3 py-2 mr-2"
+          className="border rounded px-3 py-2 mr-1"
         />
         <input
      
@@ -45,7 +45,7 @@ const Search = () => {
           placeholder="Location"
           value={location}
           onChange={(e) => setLocation(e.target.value)}
-          className="border rounded px-3 py-2 mr-2"
+          className="border rounded px-3 py-2 mr-1"
         />
         <input
    
@@ -57,7 +57,7 @@ const Search = () => {
         />
         <button
           type="submit"
-          className="bg-blue-500 text-white rounded px-4 py-2 hover:bg-blue-600"
+          className="bg-[#50d71e] text-black rounded px-4 py-2 hover:bg-blue-600"
         >
           Search
         </button>
