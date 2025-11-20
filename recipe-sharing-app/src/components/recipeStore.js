@@ -20,7 +20,8 @@ function generateRecommended(recipes, favorites) {
 
 export const useRecipeStore = create((set, get) => ({
   recipes: [],
-
+  searchTerm: '',
+  setSearchTerm: (term) => set({ searchTerm: term }),
   // Favorites
   favorites: [],
 
