@@ -1,11 +1,12 @@
 // import { useState } from 'react'
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+// import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { Profile, ProfileDetails, ProfileSettings } from './components/Profile';
 import BlogPost from './components/BlogPost';
 import ProtectedRoute from './components/ProtectedRoute';
 import './App.css'
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
 const Home = () => <h2>Home Page</h2>;
 const Login = () => <h2>Login Page (Public)</h2>;
@@ -15,12 +16,16 @@ function App() {
 
   return (
     <>
-     <Router>
-      <nav style={{ padding: '10px', background: '#f4f4f4', marginBottom: '20px' }}>
-        <Link to="/">Home</Link> | 
-        <Link to="/blog/123"> Blog Post</Link> | 
-        <Link to="/profile"> Profile (Protected)</Link>
+    <Router>
+      <nav>
+        <Link to="/profile">Go to Profile</Link>
       </nav>
+
+      {/* <Routes>
+        {/* The '*' allows descendant <Routes> inside the Profile component */}
+        {/* <Route path="/profile/*" element={<Profile />} /> */}
+      {/* </Routes>} */}
+  
 
       <Routes>
         <Route path="/" element={<Home />} />
@@ -29,7 +34,7 @@ function App() {
         {/* Dynamic Route */}
         <Route path="/blog/:postId" element={<BlogPost />} />
 
-        {/* Protected Nested Route */}
+        Protected Nested Route
         <Route path="/profile" element={
           <ProtectedRoute>
             <Profile />

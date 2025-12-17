@@ -1,23 +1,29 @@
-import { Link, Outlet } from 'react-router-dom';
+import { Routes, Route, Link } from 'react-router-dom';
 
-const Profile = () => (
-  <div style={{ display: 'flex', gap: '20px' }}>
-    <nav style={{ borderRight: '1px solid #ccc', padding: '10px' }}>
-      <h3>Profile Menu</h3>
-      <ul>
-        <li><Link to="details">Details</Link></li>
-        <li><Link to="settings">Settings</Link></li>
-      </ul>
-    </nav>
-    <div style={{ flex: 1 }}>
-      <h2>User Profile</h2>
-      {/* Outlet is where the child routes will render */}
-      <Outlet />
+// Simple sub-components
+const ProfileDetails = () => <div><h3>Profile Details</h3><p>User info...</p></div>;
+const ProfileSettings = () => <div><h3>Profile Settings</h3><p>Manage account...</p></div>;
+
+const Profile = () => {
+  return (
+    <div style={{ padding: '20px', border: '1px solid #ddd' }}>
+      <h2>User Profile Dashboard</h2>
+      
+      <nav style={{ marginBottom: '20px' }}>
+        <Link to="details">Details</Link> | <Link to="settings">Settings</Link>
+      </nav>
+
+      <hr />
+
+      {/* Internal Routing Logic */}
+      <Routes>
+        <Route path="details" element={<ProfileDetails />} />
+        <Route path="settings" element={<ProfileSettings />} />
+        {/* Optional: Default view when at /profile/ */}
+        <Route path="/" element={<div>Please select a sub-section.</div>} />
+      </Routes>
     </div>
-  </div>
-);
+  );
+};
 
-const ProfileDetails = () => <div><h3>Profile Details</h3><p>User info goes here...</p></div>;
-const ProfileSettings = () => <div><h3>Profile Settings</h3><p>Manage your account...</p></div>;
-
-export { Profile, ProfileDetails, ProfileSettings };
+export default Profile;
