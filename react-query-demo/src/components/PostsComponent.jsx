@@ -14,6 +14,9 @@ const PostsComponent = () => {
     queryKey: ['posts'], // Key must be an array
     queryFn: fetchPosts,
     staleTime: 10000,
+    cacheTike: 300000,            // (formerly cacheTime) Cache persists for 5 mins
+    refetchOnWindowFocus: true, // Auto-refetch when user switches back to browser tab
+    placeholderData: keepPreviousData,
   });
 
   if (isLoading) return <div>Loading initial data...</div>;
