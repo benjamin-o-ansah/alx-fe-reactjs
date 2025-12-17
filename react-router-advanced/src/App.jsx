@@ -2,9 +2,9 @@
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import { Profile, ProfileDetails, ProfileSettings } from './component/Profile';
-import BlogPost from './component/BlogPost';
-import ProtectedRoute from './component/ProtectedRoute';
+import { Profile, ProfileDetails, ProfileSettings } from './components/Profile';
+import BlogPost from './components/BlogPost';
+import ProtectedRoute from './components/ProtectedRoute';
 import './App.css'
 
 const Home = () => <h2>Home Page</h2>;
