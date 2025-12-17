@@ -8,7 +8,7 @@ const RegistrationForm = () => {
     password: '',
   });
 
-  const [error, setError] = useState('');
+  const [error, setErrors] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -18,11 +18,11 @@ const RegistrationForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Basic Validation
-    if (!formData.username || !formData.email || !formData.password) {
-      setError('All fields are required!');
+    if (!username || email || !password) {
+      setErrors('All fields are required!');
       return;
     }
-    setError('');
+    setErrors('');
     console.log('Form Submitted:', formData);
   };
 
