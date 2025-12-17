@@ -31,9 +31,9 @@ const RegistrationForm = () => {
       <h2>Manual Controlled Form</h2>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       
-      <input name="username" placeholder="Username" value={formData.username} onChange={handleChange} />
-      <input name="email" type="email" placeholder="Email" value={formData.email} onChange={handleChange} />
-      <input name="password" type="password" placeholder="Password" value={formData.password} onChange={handleChange} />
+      <input name="username" placeholder="Username" value={username} onChange={handleChange} />
+      <input name="email" type="email" placeholder="Email" value={email} onChange={handleChange} />
+      <input name="password" type="password" placeholder="Password" value={password} onChange={handleChange} />
       
       <button type="submit">Register</button>
     </form>
