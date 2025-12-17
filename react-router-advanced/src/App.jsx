@@ -32,7 +32,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         
         {/* Dynamic Route */}
-        <Route path="/blog/:postId" element={<BlogPost />} />
+        <Route path="/blog/:id" element={<BlogPost />} />
 
         Protected Nested Route
         <Route path="/profile" element={
