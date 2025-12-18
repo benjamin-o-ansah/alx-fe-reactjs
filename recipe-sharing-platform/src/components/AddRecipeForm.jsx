@@ -63,7 +63,7 @@ alert("Recipe submitted successfully!");
 
 return (
         <div className="min-h-screen bg-gray-50 px-4 py-10">
-        <div className="max-w-2xl mx-auto bg-white p-6 rounded-2xl shadow-lg">
+        <div className="max-w-2xl mx-auto bg-white p-6 md:p-8 rounded-2xl shadow-lg">
         <h2 className="text-2xl font-bold mb-6 text-gray-800">
         ➕ Add New Recipe
         </h2>
