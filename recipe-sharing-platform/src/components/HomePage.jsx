@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import recipesData from "../data.json";
-
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import RecipeDetail from "./components/RecipeDetail";
 
 const HomePage = () => {
 const [recipes, setRecipes] = useState([]);
